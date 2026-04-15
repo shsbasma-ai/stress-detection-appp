@@ -1,4 +1,5 @@
 streamlit
+flask
 plotly
 speechrecognition
 numpy
@@ -6,4 +7,3 @@ pandas
 scikit-learn
 requests
 joblib
-opencv-python-headless==4.8.1.78
