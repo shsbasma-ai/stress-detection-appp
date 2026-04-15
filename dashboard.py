@@ -12,7 +12,13 @@ import json
 import os
 import sqlite3
 import re
-import cv2
+try:
+    import cv2
+except ImportError:
+    import sys
+    import subprocess
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "opencv-python-headless"])
+    import cv2
 import numpy as np
 import smtplib
 import traceback
@@ -20,7 +26,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import sqlite3
 sqlite3.enable_callback_tracebacks(True)
+import os
 
+# Pour Hugging Face - chemins relatifs
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Modèles
+MODEL_PATH = os.path.join(BASE_DIR, "model", "stress_model.joblib")
+VECTORIZER_PATH = os.path.join(BASE_DIR, "model", "vectorizer.joblib")
+SCALER_PATH = os.path.join(BASE_DIR, "model", "scaler.joblib")
 # NOUVEAUX IMPORTS POUR L'ANALYSE FACIALE
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
