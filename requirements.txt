@@ -1,5 +1,4 @@
 streamlit
-flask
 plotly
 speechrecognition
 numpy
